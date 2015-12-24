@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // Sets the title in the Navigation Bar
+        self.title = "Tip Calculator"
+        billField.becomeFirstResponder()
+        
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         
@@ -39,14 +43,28 @@ class ViewController: UIViewController {
         tipLabel.text = "$\(tip)"
         totalLabel.text = "$\(total)"
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f",total)
+        // Currency
+        var formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale.currentLocale()
         
+        tipLabel.text = formatter.stringFromNumber(tip)
+        totalLabel.text = formatter.stringFromNumber(total)
     }
 
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
     
+    // Default Tip Percentage
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        var defaults = NSUserDefaults.standardUserDefaults()
+        var intValue = defaults.integerForKey("defaultTipPercentage")
+        tipControl.selectedSegmentIndex = intValue
+        onEditingChanged(animated)
+    }
+    
+
 }
 
