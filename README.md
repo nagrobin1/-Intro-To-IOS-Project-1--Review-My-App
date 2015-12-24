@@ -26,7 +26,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='Video Walkthrough'/>
+<img src='https://github.com/nagrobin1/-Intro-To-IOS-Project-1--Review-My-App/blob/master/TipsCalculator.gif?raw=true' title='Video Walkthrough'/>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
